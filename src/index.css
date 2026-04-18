@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Anannya Srivastava Portfolio Design System
+   Monochromatic pastel blue palette. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 214 42% 96%;
+    --foreground: 217 28% 22%;
+
+    --card: 212 40% 98%;
+    --card-foreground: 217 28% 22%;
+
+    --popover: 212 40% 98%;
+    --popover-foreground: 217 28% 22%;
+
+    --primary: 212 56% 72%;
+    --primary-foreground: 214 42% 96%;
+    --primary-glow: 211 72% 82%;
+
+    --secondary: 214 36% 90%;
+    --secondary-foreground: 217 22% 27%;
+
+    --muted: 212 28% 92%;
+    --muted-foreground: 216 16% 44%;
+
+    --accent: 212 56% 72%;
+    --accent-foreground: 214 42% 96%;
+
+    --destructive: 0 62% 64%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 212 28% 84%;
+    --input: 212 30% 88%;
+    --ring: 212 56% 72%;
+
+    --surface: 214 34% 94%;
+    --surface-elevated: 212 36% 98%;
+
+    --radius: 0.875rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(212 56% 72%), hsl(211 72% 82%));
+    --gradient-aurora: radial-gradient(ellipse 75% 55% at 50% 0%, hsl(212 56% 72% / 0.22), transparent 62%),
+      radial-gradient(ellipse 55% 45% at 78% 24%, hsl(211 72% 82% / 0.16), transparent 60%),
+      radial-gradient(ellipse 45% 40% at 18% 36%, hsl(214 44% 88% / 0.22), transparent 62%);
+    --gradient-text: linear-gradient(135deg, hsl(217 28% 22%), hsl(212 30% 44%));
+    --gradient-border: linear-gradient(135deg, hsl(212 56% 72% / 0.28), hsl(211 72% 82% / 0.2));
+    --gradient-surface: linear-gradient(180deg, hsl(212 36% 98% / 0.97), hsl(214 34% 94% / 0.92));
+
+    --shadow-glow: 0 0 60px hsl(212 56% 72% / 0.2);
+    --shadow-elegant: 0 18px 50px -20px hsl(217 30% 28% / 0.16);
+    --shadow-card: 0 1px 3px hsl(217 30% 28% / 0.06), 0 12px 40px hsl(217 30% 28% / 0.08);
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .dark {
+    --background: 220 24% 14%;
+    --foreground: 214 34% 92%;
+
+    --card: 220 22% 18%;
+    --card-foreground: 214 34% 92%;
+
+    --popover: 220 22% 17%;
+    --popover-foreground: 214 34% 92%;
+
+    --primary: 212 52% 72%;
+    --primary-foreground: 220 24% 14%;
+    --primary-glow: 211 66% 80%;
+
+    --secondary: 220 16% 24%;
+    --secondary-foreground: 214 34% 92%;
+
+    --muted: 220 14% 22%;
+    --muted-foreground: 214 18% 74%;
+
+    --accent: 212 52% 72%;
+    --accent-foreground: 220 24% 14%;
+
+    --destructive: 0 60% 62%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 14% 30%;
+    --input: 220 14% 28%;
+    --ring: 212 52% 72%;
+
+    --surface: 220 18% 16%;
+    --surface-elevated: 220 18% 20%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(212 52% 72%), hsl(211 66% 80%));
+    --gradient-aurora: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(212 52% 72% / 0.18), transparent 62%),
+      radial-gradient(ellipse 58% 46% at 80% 28%, hsl(211 66% 80% / 0.12), transparent 60%),
+      radial-gradient(ellipse 46% 42% at 18% 42%, hsl(216 24% 42% / 0.12), transparent 64%);
+    --gradient-text: linear-gradient(135deg, hsl(214 34% 92%), hsl(211 44% 78%));
+    --gradient-border: linear-gradient(135deg, hsl(212 52% 72% / 0.3), hsl(211 66% 80% / 0.16));
+    --gradient-surface: linear-gradient(180deg, hsl(220 18% 20% / 0.95), hsl(220 18% 16% / 0.9));
+
+    --shadow-glow: 0 0 80px hsl(212 52% 72% / 0.18);
+    --shadow-elegant: 0 24px 60px -22px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.22), 0 14px 36px hsl(0 0% 0% / 0.18);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv11", "ss01", "ss03";
+    background-image:
+      radial-gradient(circle at top, hsl(var(--primary) / 0.08), transparent 34%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--surface)));
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+}
+
+@layer components {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-soft {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-aurora {
+    background: var(--gradient-aurora);
+  }
+
+  .bg-surface-gradient {
+    background: var(--gradient-surface);
+  }
+
+  .glass {
+    @apply border border-border/60 bg-card/70 backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-border/70 bg-card/85 backdrop-blur-2xl;
+  }
+
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .border-gradient {
+    position: relative;
+    background: hsl(var(--card));
+  }
+
+  .border-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-border);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent 80%);
+  }
+
+  .circuit-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.14) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.14) 1px, transparent 1px),
+      radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.18) 0 2px, transparent 3px),
+      radial-gradient(circle at 80% 30%, hsl(var(--primary) / 0.14) 0 2px, transparent 3px),
+      radial-gradient(circle at 40% 75%, hsl(var(--accent) / 0.12) 0 2px, transparent 3px);
+    background-size: 44px 44px, 44px 44px, 180px 180px, 220px 220px, 160px 160px;
+    background-position: center;
+  }
+
+  .tech-panel {
+    @apply relative overflow-hidden rounded-[1.75rem] border border-border/70 bg-card/80 backdrop-blur-xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .tech-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(125deg, hsl(var(--background) / 0.04), transparent 35%),
+      linear-gradient(90deg, transparent, hsl(var(--accent) / 0.06), transparent);
+    pointer-events: none;
+  }
+
+  .section-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3 py-1 font-mono text-xs uppercase tracking-[0.24em] text-accent backdrop-blur;
+  }
+
+  .noise {
+    position: relative;
+  }
+
+  .noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+}
+
+@layer utilities {
+  .font-display { font-family: 'Geist', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .container-custom { @apply mx-auto max-w-6xl px-6 md:px-8; }
+}
