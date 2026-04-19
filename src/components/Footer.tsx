@@ -15,10 +15,10 @@ export function Footer() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <a href="https://github.com/rectifier_4321" target="_blank" rel="noreferrer" className="rounded-full p-2 transition hover:bg-secondary" aria-label="GitHub">
+          <a href="https://github.com/anannya7797-crypto" target="_blank" rel="noreferrer" className="rounded-full p-2 transition hover:bg-secondary" aria-label="GitHub">
             <Github className="h-4 w-4" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="rounded-full p-2 transition hover:bg-secondary" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/anannya-srivastava-52a155260/?skipRedirect=true" target="_blank" rel="noreferrer" className="rounded-full p-2 transition hover:bg-secondary" aria-label="LinkedIn">
             <Linkedin className="h-4 w-4" />
           </a>
           <Link to="/contact" className="rounded-full p-2 transition hover:bg-secondary" aria-label="Contact">
