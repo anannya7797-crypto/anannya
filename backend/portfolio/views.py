@@ -1,6 +1,8 @@
 import random
 import time
 
+from django.conf import settings
+from django.core.mail import send_mail
 from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -64,10 +66,32 @@ class ContactSubmissionCreateView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         instance = serializer.save()
+        email_sent = False
+        if settings.CONTACT_EMAIL_TO:
+            subject = f"New portfolio message from {instance.name}"
+            body = (
+                f"Name: {instance.name}\n"
+                f"Email: {instance.email}\n\n"
+                f"Message:\n{instance.message}"
+            )
+            try:
+                send_mail(
+                    subject=subject,
+                    message=body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.CONTACT_EMAIL_TO],
+                    fail_silently=False,
+                )
+                email_sent = True
+            except Exception:
+                # The submission is already saved, so a mail outage should not lose the lead.
+                email_sent = False
+
         return Response(
             {
                 "ok": True,
                 "id": instance.id,
+                "email_sent": email_sent,
                 "message": "Submission received successfully.",
             },
             status=status.HTTP_201_CREATED,
