@@ -7,7 +7,7 @@ import { Typewriter } from "@/components/Typewriter";
 import { SEO } from "@/components/SEO";
 import { useGitHub } from "@/hooks/useGitHub";
 import { useProjectsResource, useSkillsResource, useTimelineResource } from "@/services/content";
-import avatar from "@/assets/Anannya1.jpg";
+import heroDeveloper from "@/assets/ai-developer-hero.png";
 
 export default function Home() {
   const gh = useGitHub();
@@ -144,8 +144,8 @@ export default function Home() {
                     <div className="absolute inset-[0.85rem] rounded-[1.7rem] border border-border/50" />
                     <div className="absolute inset-[1.15rem] overflow-hidden rounded-[1.5rem] border-gradient">
                       <img
-                        src={avatar}
-                        alt="Anannya Srivastava"
+                        src={heroDeveloper}
+                        alt="AI illustration of a developer working on a laptop"
                         width={512}
                         height={512}
                         className="h-full w-full object-cover object-[center_12%]"
